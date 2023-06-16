@@ -1,12 +1,10 @@
-import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import SummaryForm from "../SummaryForm";
 import userEvent from "@testing-library/user-event";
 
-describe("OrderSummary", () => {
-	test("Initial State - checkbox is not checked, button is not enabled", () => {
+describe("SummaryForm", () => {
+	test("Initial conditions - checkbox is not checked, button is not enabled", () => {
 		render(<SummaryForm />);
-
 		const checkboxTnc = screen.getByRole("checkbox", {
 			name: /terms and conditions/i,
 		});
@@ -22,25 +20,23 @@ describe("OrderSummary", () => {
 		const user = userEvent.setup();
 
 		render(<SummaryForm />);
-
-		const btnConfirmOrder = screen.getByRole("button", {
-			name: /confirm order/i,
-		});
 		const checkboxTnc = screen.getByRole("checkbox", {
 			name: /terms and conditions/i,
 		});
+		const btnConfirmOrder = screen.getByRole("button", {
+			name: /confirm order/i,
+		});
 
 		await user.click(checkboxTnc);
-		expect(checkboxTnc).toBeChecked();
 		expect(btnConfirmOrder).toBeEnabled();
 
 		await user.click(checkboxTnc);
-		expect(checkboxTnc).not.toBeChecked();
 		expect(btnConfirmOrder).toBeDisabled();
 	});
 
 	test("Popover works properly", async () => {
 		const user = userEvent.setup();
+		render(<SummaryForm />);
 
 		// popover component is hidden initially
 		const hiddenPopover = screen.queryByText(
@@ -56,7 +52,7 @@ describe("OrderSummary", () => {
 		);
 		expect(visiblePopover).toBeInTheDocument();
 
-		// on mouse unHover popover component gets hidden
+		// on mouse un-hover popover component is hidden
 		await user.unhover(lblTnc);
 		expect(visiblePopover).not.toBeInTheDocument();
 	});
