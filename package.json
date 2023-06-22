@@ -13,7 +13,11 @@
 		"react-bootstrap": "^2.7.4",
 		"react-dom": "^18.2.0",
 		"react-scripts": "5.0.1",
-		"web-vitals": "^2.1.4"
+		"web-vitals": "^2.1.4",
+		"chalk": "^5.2.0",
+		"eslint-plugin-jest-dom": "^5.0.1",
+		"eslint-plugin-testing-library": "^5.11.0",
+		"msw": "^1.2.2"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -32,12 +36,6 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
-	},
-	"devDependencies": {
-		"chalk": "^5.2.0",
-		"eslint-plugin-jest-dom": "^5.0.1",
-		"eslint-plugin-testing-library": "^5.11.0",
-		"msw": "^1.2.2"
 	},
 	"jest": {
 		"moduleNameMapper": {
